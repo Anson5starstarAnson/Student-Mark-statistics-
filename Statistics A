@@ -1,0 +1,132 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyN544D+KjUxueQld65/z1uf",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Anson5starstarAnson/Student-Mark-statistics-/blob/main/Statistics%20A\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 13,
+      "metadata": {
+        "id": "pWumYJ8lVa9S",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "ff47ad3e-002b-4286-8e1b-cdab72682e11"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "How many students are in your class? 2\n",
+            "Mark of student 1 is?\n",
+            "Please input the mark: 59\n",
+            "Mark of student 2 is?\n",
+            "Please input the mark: 59\n",
+            "The sum of mark is: <built-in function sum>\n",
+            "The squared sum of mark is: 6962\n",
+            "The maximum mark is: 59\n",
+            "The minimum mark is: 59\n",
+            "The arithmetic mean mark is: 59.0\n",
+            "The median mark is: 59.0\n",
+            "The quadratic mean mark is: 59.0\n",
+            "The mode(s) mark(s) is/are: [59]\n",
+            "The harmonic mean of marks is: 59.0\n",
+            "The geometric mean of marks is: 59.0\n",
+            "The range of marks is: 0\n"
+          ]
+        }
+      ],
+      "source": [
+        "num = int(input(\"How many students are in your class? \"))\n",
+        "marks = []\n",
+        "\n",
+        "for i in range(0,num,1):\n",
+        "    print(\"Mark of student\", i+1, \"is?\")\n",
+        "    student_mark = int(input(\"Please input the mark: \"))\n",
+        "    marks.append(student_mark)\n",
+        "\n",
+        "marks.sort()  # Sort the list of marks in ascending order\n",
+        "\n",
+        "max_mark = max(marks)\n",
+        "min_mark = min(marks)\n",
+        "average = sum(marks) / num\n",
+        "\n",
+        "# Calculate the median\n",
+        "if num % 2 == 0:\n",
+        "    median = (marks[num//2 - 1] + marks[num//2]) / 2\n",
+        "else:\n",
+        "    median = marks[num//2]\n",
+        "\n",
+        "# Calculate the mode\n",
+        "count_dict = {}\n",
+        "for mark in marks:\n",
+        "    if mark in count_dict:\n",
+        "        count_dict[mark] += 1\n",
+        "    else:\n",
+        "        count_dict[mark] = 1\n",
+        "\n",
+        "mode = []\n",
+        "max_count = max(count_dict.values())\n",
+        "for mark, count in count_dict.items():\n",
+        "    if count == max_count:\n",
+        "        mode.append(mark)\n",
+        "\n",
+        "\n",
+        "# Calculate the harmonic mean\n",
+        "harmonic_mean = num / sum(1 / mark for mark in marks)\n",
+        "\n",
+        "# Calculate the geometric mean\n",
+        "product = 1\n",
+        "for mark in marks:\n",
+        "    product *= mark\n",
+        "geometric_mean = product ** (1 / num)\n",
+        "\n",
+        "# Calculate the root mean square\n",
+        "squared_sum = sum(mark ** 2 for mark in marks)\n",
+        "root_mean_square = (squared_sum / num) ** 0.5\n",
+        "\n",
+        "# Calculate the range\n",
+        "data_range = max_mark - min_mark\n",
+        "\n",
+        "print(\"The sum of mark is:\", sum)\n",
+        "print(\"The squared sum of mark is:\", squared_sum)\n",
+        "print(\"The maximum mark is:\", max_mark)\n",
+        "print(\"The minimum mark is:\", min_mark)\n",
+        "print(\"The arithmetic mean mark is:\", average)\n",
+        "print(\"The median mark is:\", median)\n",
+        "print(\"The quadratic mean mark is:\", root_mean_square)\n",
+        "if len(mode) == num:\n",
+        " print(\"There is no mode\")\n",
+        "else:\n",
+        " print(\"The mode(s) mark(s) is/are:\", mode )\n",
+        "print(\"The harmonic mean of marks is:\", harmonic_mean)\n",
+        "print(\"The geometric mean of marks is:\", geometric_mean)\n",
+        "print(\"The range of marks is:\", data_range)"
+      ]
+    }
+  ]
+}
